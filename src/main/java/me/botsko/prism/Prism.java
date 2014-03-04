@@ -78,6 +78,7 @@ public class Prism extends JavaPlugin {
 	private static ActionRegistry actionRegistry;
 	private static HandlerRegistry<?> handlerRegistry;
 	private static Ignore ignore;
+	protected static boolean trackHopperItemEvents;
 	protected static List<Integer> illegalBlocks;
 	protected static List<String> illegalEntities;
 	protected static Map<String,String> alertedOres = new HashMap<String,String>();
@@ -280,6 +281,7 @@ public class Prism extends JavaPlugin {
 		config = mc.getConfig();
 		
 		// Cache config arrays we check constantly
+		trackHopperItemEvents = getConfig().getBoolean("prism.track-hopper-item-events");
 		illegalBlocks = (List<Integer>) getConfig().getList("prism.appliers.never-place-block");
 		illegalEntities = (List<String>) getConfig().getList("prism.appliers.never-spawn-entity");
 		
@@ -551,6 +553,11 @@ public class Prism extends JavaPlugin {
 	 */
 	public boolean dependencyEnabled(String pluginName) {
 		return enabledPlugins.contains(pluginName);
+	}
+	
+	
+	public boolean getTrackHopperItemEvents() {
+		return trackHopperItemEvents;
 	}
 	
 	
