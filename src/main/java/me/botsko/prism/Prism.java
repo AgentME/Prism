@@ -284,6 +284,7 @@ public class Prism extends JavaPlugin {
 		illegalEntities = (ArrayList<String>) getConfig().getList("prism.appliers.never-spawn-entity");
 		
 		ConfigurationSection alertBlocks = getConfig().getConfigurationSection("prism.alerts.ores.blocks");
+		alertedOres.clear();
 		if( alertBlocks != null){
 			for( String key : alertBlocks.getKeys(false) ){
 				alertedOres.put( key, alertBlocks.getString(key));
@@ -296,6 +297,11 @@ public class Prism extends JavaPlugin {
 		items = new MaterialAliases();
 	}
 
+	@Override
+	public void reloadConfig() {
+		super.reloadConfig();
+		loadConfig();
+	}
 	
 	/**
 	 * 
