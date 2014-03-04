@@ -74,13 +74,13 @@ public class Prism extends JavaPlugin {
 	private MaterialAliases items;
 	private Language language;
 	private static Logger log = Logger.getLogger("Minecraft");
-	private ArrayList<String> enabledPlugins = new ArrayList<String>();
+	private List<String> enabledPlugins = new ArrayList<String>();
 	private static ActionRegistry actionRegistry;
 	private static HandlerRegistry<?> handlerRegistry;
 	private static Ignore ignore;
-	protected static ArrayList<Integer> illegalBlocks;
-	protected static ArrayList<String> illegalEntities;
-	protected static HashMap<String,String> alertedOres = new HashMap<String,String>();
+	protected static List<Integer> illegalBlocks;
+	protected static List<String> illegalEntities;
+	protected static Map<String,String> alertedOres = new HashMap<String,String>();
 
 	/**
 	 * Public
@@ -280,8 +280,8 @@ public class Prism extends JavaPlugin {
 		config = mc.getConfig();
 		
 		// Cache config arrays we check constantly
-		illegalBlocks = (ArrayList<Integer>) getConfig().getList("prism.appliers.never-place-block");
-		illegalEntities = (ArrayList<String>) getConfig().getList("prism.appliers.never-spawn-entity");
+		illegalBlocks = (List<Integer>) getConfig().getList("prism.appliers.never-place-block");
+		illegalEntities = (List<String>) getConfig().getList("prism.appliers.never-spawn-entity");
 		
 		ConfigurationSection alertBlocks = getConfig().getConfigurationSection("prism.alerts.ores.blocks");
 		alertedOres.clear();
@@ -558,7 +558,7 @@ public class Prism extends JavaPlugin {
 	 * 
 	 * @return
 	 */
-	public static ArrayList<Integer> getIllegalBlocks(){
+	public static List<Integer> getIllegalBlocks(){
 		return illegalBlocks;
 	}
 	
@@ -566,7 +566,7 @@ public class Prism extends JavaPlugin {
 	/**
 	 * 
 	 */
-	public static ArrayList<String> getIllegalEntities(){
+	public static List<String> getIllegalEntities(){
 		return illegalEntities;
 	}
 	
@@ -574,7 +574,7 @@ public class Prism extends JavaPlugin {
 	/**
 	 * 
 	 */
-	public static HashMap<String,String> getAlertedOres(){
+	public static Map<String,String> getAlertedOres(){
 		return alertedOres;
 	}
 
