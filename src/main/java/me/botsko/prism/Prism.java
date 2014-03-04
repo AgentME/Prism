@@ -32,6 +32,7 @@ import me.botsko.prism.listeners.PrismChannelChatEvents;
 import me.botsko.prism.listeners.PrismCustomEvents;
 import me.botsko.prism.listeners.PrismEntityEvents;
 import me.botsko.prism.listeners.PrismInventoryEvents;
+import me.botsko.prism.listeners.PrismHopperEvents;
 import me.botsko.prism.listeners.PrismPlayerEvents;
 import me.botsko.prism.listeners.PrismVehicleEvents;
 import me.botsko.prism.listeners.PrismWorldEvents;
@@ -213,6 +214,10 @@ public class Prism extends JavaPlugin {
 			getServer().getPluginManager().registerEvents(new PrismPlayerEvents(this), this);
 			getServer().getPluginManager().registerEvents(new PrismInventoryEvents(this), this);
 			getServer().getPluginManager().registerEvents(new PrismVehicleEvents(this), this);
+
+			if (getConfig().getBoolean("prism.track-hopper-item-events")) {
+				getServer().getPluginManager().registerEvents(new PrismHopperEvents(this), this);
+			}
 
 			if (getConfig().getBoolean("prism.tracking.api.enabled")) {
 				getServer().getPluginManager().registerEvents(new PrismCustomEvents(this), this);
